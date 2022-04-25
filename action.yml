@@ -1,0 +1,22 @@
+# action.yml
+name: 'Create and Test Custom Inference Model'
+description: 'Create and test custom inference model in DataRobot'
+inputs:
+  main-branch:  # id of input
+    description: 'The main branch for PRs to take an action'
+    required: false
+    default: 'master'
+outputs:
+  new-model-created: # id of output
+    description: 'Whether a new custom inference model was created'
+  model-deleted: # id of output
+    description: 'Whether an existing custom inference model was deleted'
+  new-model-version-created: # id of output
+    description: 'Whether a new custom inference model version was created'
+  test-result: # id of output
+    description: 'Whether the custom inference test was successful'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - --branch ${{ inputs.main-branch }}
