@@ -7,6 +7,7 @@ parser.add_argument('--branch', required=True, help='The branch against which PR
 
 args = parser.parse_args()
 print(f'The main branch is: {args.branch}')
+print(f'GITHUB_WORKSPACE: {os.environ["GITHUB_WORKSPACE"]}')
 
 os.environ['new-model-created'] = "True"
 os.environ['model-deleted'] = "False"
