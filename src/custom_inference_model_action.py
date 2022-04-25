@@ -9,11 +9,7 @@ args = parser.parse_args()
 print(f'The main branch is: {args.branch}')
 print(f'GITHUB_WORKSPACE: {os.environ["GITHUB_WORKSPACE"]}')
 
-print(
-    """
-    ::set-output name=new-model-created::True
-    ::set-output name=model-deleted::False
-    ::set-output name=new-model-version-created::True
-    ::set-output name=test-result::The test passed with success.
-    """
-)
+print('::set-output name=new-model-created::True')
+print('::set-output name=model-deleted::False')
+print('::set-output name=new-model-version-created::True')
+print('::set-output name=test-result::The test passed with success.')
