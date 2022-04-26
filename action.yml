@@ -18,8 +18,8 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - run: pip install -r src/requirements.txt
+    - run: pip install -r ${GITHUB_WORKSPACE}/src/requirements.txt
       shell: bash
     - run: |
-        python src/custom_inference_model_action.py --branch ${{ inputs.main-branch }}
+        python ${GITHUB_WORKSPACE}/src/custom_inference_model_action.py --branch ${{ inputs.main-branch }}
       shell: bash
