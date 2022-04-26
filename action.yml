@@ -9,18 +9,23 @@ inputs:
 outputs:
   new-model-created: # id of output
     description: 'Whether a new custom inference model was created'
+    value: ${{ steps.custom-inference-model-action.outputs.new-model-created }}
   model-deleted: # id of output
     description: 'Whether an existing custom inference model was deleted'
+    value: ${{ steps.custom-inference-model-action.outputs.model-deleted }}
   new-model-version-created: # id of output
     description: 'Whether a new custom inference model version was created'
+    value: ${{ steps.custom-inference-model-action.outputs.new-model-version-created }}
   test-result: # id of output
     description: 'Whether the custom inference test was successful'
+    value: ${{ steps.custom-inference-model-action.outputs.test-result }}
 runs:
   using: 'composite'
   steps:
     - run: pip install -r ${GITHUB_ACTION_PATH}/src/requirements.txt
       shell: bash
-    - run: |
+    - id: custom-inference-model-action
+      run: |
         python ${GITHUB_ACTION_PATH}/src/custom_inference_model_action.py \
           --branch ${{ inputs.main-branch }}
       shell: bash
