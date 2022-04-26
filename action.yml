@@ -21,5 +21,6 @@ runs:
     - run: pip install -r ${GITHUB_ACTION_PATH}/src/requirements.txt
       shell: bash
     - run: |
-        python ${GITHUB_ACTION_PATH}/src/custom_inference_model_action.py --branch ${{ inputs.main-branch }}
+        python ${GITHUB_ACTION_PATH}/src/custom_inference_model_action.py \
+          --branch ${{ inputs.main-branch }}
       shell: bash
